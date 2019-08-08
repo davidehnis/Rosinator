@@ -1,4 +1,6 @@
-﻿namespace rosinator.core
+﻿using System.Collections.Generic;
+
+namespace rosinator.core
 {
     public class Method
     {
@@ -6,6 +8,10 @@
         {
             Name = name;
         }
+
+        public IEnumerable<Parameter> Parameters => ParameterList;
+
+        protected List<Parameter> ParameterList { get; } = new List<Parameter>();
 
         public string Name { get; }
 
@@ -18,6 +24,7 @@
 
         public void Add(Parameter parameter)
         {
+            ParameterList.Add(parameter);
         }
     }
 }

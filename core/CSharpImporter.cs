@@ -5,12 +5,12 @@ namespace rosinator.core
 {
     public class CSharpImporter
     {
-        public IEnumerable<string> RetrieveClasses(string path)
+        public IEnumerable<Class> RetrieveClasses(string path)
         {
             var msWorkspace = MSBuildWorkspace.Create();
 
             var project = msWorkspace.OpenProjectAsync(path).Result;
-            var classes = new List<string>();
+            var classes = new List<Class>();
             foreach (var document in project.Documents)
             {
                 var semanticModel = document.GetSemanticModelAsync().Result;
