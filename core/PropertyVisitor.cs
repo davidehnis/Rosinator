@@ -23,7 +23,7 @@ namespace rosinator.core
             {
                 property.Add(new Modifier(modifier.ValueText));
             }
-            
+
             Properties.Add(property);
             return node;
         }
