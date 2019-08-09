@@ -5,26 +5,6 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace rosinator.core
 {
-    public class Accessor
-    {
-        public Accessor(string name)
-        {
-            Name = name;
-        }
-
-        public string Name { get; }
-    }
-
-    public class Modifier
-    {
-        public Modifier(string name)
-        {
-            Name = name;
-        }
-
-        public string Name { get; }
-    }
-
     public class MethodVisitor : CSharpSyntaxRewriter
     {
         public List<Method> Methods { get; set; } = new List<Method>();
