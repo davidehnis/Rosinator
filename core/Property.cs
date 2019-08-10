@@ -31,5 +31,10 @@ namespace rosinator.core
         public string Name { get; }
 
         public string Type { get; }
+
+        public override string ToString()
+        {
+            return $"{Type} {Name}";
+        }
     }
 }

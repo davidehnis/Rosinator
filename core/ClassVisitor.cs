@@ -17,6 +17,9 @@ namespace rosinator.core
             var methodVisitor = new MethodVisitor();
             methodVisitor.Visit(node.SyntaxTree.GetRoot());
 
+            var propertyVisitor = new PropertyVisitor();
+            propertyVisitor.Visit(node.SyntaxTree.GetRoot());
+
             var namespaceNode = node.SyntaxTree.GetRoot()
                 .DescendantNodes()
                 .OfType<NamespaceDeclarationSyntax>()
@@ -27,6 +30,7 @@ namespace rosinator.core
                 .ToList();
             var cls = new Class(node.Identifier.ValueText);
             cls.AddRange(methodVisitor.Methods);
+            cls.AddRange(propertyVisitor.Properties);
             cls.Namespace = namespaceNode?.Name.ToString();
 
             foreach (var st in usingStatements)

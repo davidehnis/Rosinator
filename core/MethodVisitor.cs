@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -19,6 +20,12 @@ namespace rosinator.core
             {
                 var para = new Parameter(parameter.Identifier.ValueText, parameter.Type.ToString());
                 method.Add(para);
+            }
+
+            method.ReturnType = node.ReturnType.ToString();
+            foreach (var modifier in node.Modifiers)
+            {
+                method.Add(new Modifier(modifier.ValueText));
             }
 
             Methods.Add(method);

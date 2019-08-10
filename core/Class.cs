@@ -15,9 +15,13 @@ namespace rosinator.core
 
         public IEnumerable<Using> Usings => UsingList;
 
+        public IEnumerable<Property> Properties => PropertyList;
+
         protected List<Method> MethodList { get; } = new List<Method>();
 
         protected List<Using> UsingList { get; } = new List<Using>();
+
+        protected List<Property> PropertyList { get; } = new List<Property>();
 
         public void Add(Method method)
         {
@@ -34,11 +38,21 @@ namespace rosinator.core
             MethodList.AddRange(methods);
         }
 
+        public void AddRange(IEnumerable<Property> properties)
+        {
+            PropertyList.AddRange(properties);
+        }
+
         public void AddRange(IEnumerable<Using> usings)
         {
             UsingList.AddRange(usings);
         }
 
         public string Name { get; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

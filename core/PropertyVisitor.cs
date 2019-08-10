@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -14,9 +15,13 @@ namespace rosinator.core
             node = (PropertyDeclarationSyntax)base.VisitPropertyDeclaration(node);
             var property = new Property(node.Identifier.ValueText, node.Type.ToString());
 
-            foreach (var accessor in node.AccessorList.Accessors)
+            if (node.AccessorList != null)
             {
-                property.Add(new Accessor(accessor.ToString()));
+                var accessors = node.AccessorList.Accessors.ToList();
+                foreach (var accessor in accessors)
+                {
+                    property.Add(new Accessor(accessor.ToString()));
+                }
             }
 
             foreach (var modifier in node.Modifiers)

@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace rosinator.core.tests
 {
@@ -30,18 +29,20 @@ namespace rosinator.core.tests
         {
             // Arrange
             var importer = new CSharpImporter();
+            var source = CreateClassSourceCode();
 
             // Act
-            var @class = importer.Convert(CreateClass());
+            var @class = importer.Convert(source);
 
             // Assert
             Assert.IsNotNull(@class);
             Assert.AreEqual(5, @class.Usings.Count());
             Assert.AreEqual("Microsoft.CodeAnalysis", @class.Usings.First().Text);
             Assert.AreEqual("rosinator.core", @class.Namespace);
+            Assert.IsNotNull(@class.Methods.FirstOrDefault(m => m.Name == "Convert"));
         }
 
-        private string CreateClass()
+        private string CreateClassSourceCode()
         {
             var sb = new System.Text.StringBuilder(1448);
             sb.AppendLine(@"using Microsoft.CodeAnalysis;");
