@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.0.0</version>
+    <title>$title$</title>
+    <authors>David Ehnis</authors>
+    <owners>David Ehnis</owners>
+    <projectUrl>https://github.com/davidehnis/Rosinator</projectUrl>
+    <license type="expression">GPL-3.0-or-later</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An API that allows users to access Roslyn functionality with just a few lines of code</description>
+    <releaseNotes>Initial</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+  </metadata>
+</package>
